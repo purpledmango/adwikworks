@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container layout_padding">
+    <div class="pt-4">
+        <h2 class="contact_taital text-center">Add Property Images</h2>
+    </div>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="image" class="form-label">Upload Property Image</label>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="image" name="image" accept="image/*" onchange="previewImage(event)" required>
+                <label class="custom-file-label" for="image">Choose file</label>
+            </div>
+            <small class="form-text text-muted">Select a high-quality image of the property.</small>
+        </div>
+
+        <!-- Preview the selected image -->
+        <div class="form-group text-center">
+            <img id="image-preview" src="#" alt="Image Preview" style="max-width: 300px; display: none; margin-top: 20px; border: 1px solid #ccc; padding: 5px;" />
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+            <label for="description">Image Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3" placeholder="Write a short description for the image (optional)"></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary">Upload Image</button>
+        </div>
+    </form>
+
+    <hr>
+
+    <!-- Display Uploaded Images -->
+    <h3 class="mt-4">Uploaded Images</h3>
+    <div class="row">
+        {% for image in gallery %}
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img class="card-img-top" src="{{ image.image.url }}" alt="Gallery Image">
+                <div class="card-body">
+                    <p class="card-text">{{ image.description|default:"No description provided" }}</p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No images have been uploaded yet.</p>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    // Show a preview of the uploaded image
+    function previewImage(event) {
+        const imagePreview = document.getElementById('image-preview');
+        imagePreview.style.display = 'block';
+        imagePreview.src = URL.createObjectURL(event.target.files[0]);
+    }
+</script>
+{% endblock %}

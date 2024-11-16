@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container layout_padding">
+    <div class="pt-4">
+        <h2 class="contact_taital text-center">Property Details</h2>
+    </div>
+
+    <!-- Image Gallery Section (Slider Style) -->
+    <div id="propertyCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for image in property.gallery.all %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <img src="{{ image.image.url }}" class="d-block w-100" alt="Property Image">
+                </div>
+            {% endfor %}
+        </div>
+        <!-- Font Awesome Arrows -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#propertyCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true">
+                <i class="fas fa-chevron-left"></i> <!-- Font Awesome Left Arrow -->
+            </span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#propertyCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true">
+                <i class="fas fa-chevron-right"></i> <!-- Font Awesome Right Arrow -->
+            </span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- Property Information Section -->
+    <div class="property-details">
+        <h3 class="road_text">Property Information</h3>
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <p><i class="fas fa-home"></i> <strong class="detail-label">Property Name:</strong> {{ property.title }}</p>
+            </div>
+            <div class="col-md-4">
+                <p><i class="fas fa-tag"></i> <strong class="detail-label">Type:</strong> {{ property.property_type }}</p>
+            </div>
+            <div class="col-md-4">
+                <p><i class="fas fa-align-left"></i> <strong class="detail-label">Description:</strong> {{ property.propertydetails.description }}</p>
+            </div>
+            <div class="col-md-4">
+                <p><i class="fas fa-phone"></i><strong class="detail-label">Owners Contact:</strong> +91 {{ property.added_by.contact_no }}</p>
+            
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <p><i class="fas fa-rupee-sign"></i> <strong class="detail-label">Price:</strong> ₹{{ property.propertydetails.price }}</p>
+            </div>
+            <div class="col-md-4">
+                <p><i class="fas fa-expand-arrows-alt"></i> <strong class="detail-label">Area:</strong> {{ property.propertydetails.area }} m²</p>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <p><i class="fas fa-bed"></i> <strong class="detail-label">Rooms:</strong> {{ property.propertydetails.rooms }}</p>
+            </div>
+            <div class="col-md-4">
+                <p><i class="fas fa-utensils"></i> <strong class="detail-label">Kitchen:</strong> {{ property.propertydetails.kitchen }}</p>
+            </div>
+            <div class="col-md-4">
+                <p><i class="fas fa-bath"></i> <strong class="detail-label">Bathrooms:</strong> {{ property.propertydetails.bathroom }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Amenities Section -->
+    <div class="property-amenities mt-4">
+        <h3 class="road_text">Amenities</h3>
+        <ul>
+            {% if property.ameneties.has_pool %}
+                <li><i class="fas fa-swimmer"></i> <strong>Pool</strong></li>
+            {% endif %}
+            {% if property.ameneties.has_gym %}
+                <li><i class="fas fa-dumbbell"></i> <strong>Gym</strong></li>
+            {% endif %}
+            {% if property.ameneties.has_parking %}
+                <li><i class="fas fa-parking"></i> <strong>Parking</strong></li>
+            {% endif %}
+            {% if not property.ameneties.has_pool and not property.ameneties.has_gym and not property.ameneties.has_parking %}
+                <li><strong>No amenities listed</strong></li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <!-- Address Section -->
+    <div class="property-address mt-4">
+        <h3 class="road_text">Property Address</h3>
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <p><i class="fas fa-road"></i> <strong class="detail-label">Street:</strong> {{ property.address.street }}</p>
+            </div>
+            <div class="col-md-4">
+                <p><i class="fas fa-city"></i> <strong class="detail-label">City:</strong> {{ property.address.city }}</p>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <p><i class="fas fa-map-marker-alt"></i> <strong class="detail-label">State:</strong> {{ property.address.state }}</p>
+            </div>
+            <div class="col-md-4">
+                <p><i class="fas fa-code"></i> <strong class="detail-label">Zip Code:</strong> {{ property.address.zip_code }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back Button (Optional) -->
+    <div class="form-group text-center mt-4">
+        <a href="{% url 'properties' %}" class="btn btn-secondary">Back to Properties</a>
+    </div>
+</div>
+
+{% endblock %}
+
+<!-- Inline Styling for Font Awesome Icons, Layout & Details -->
+<style>
+    /* Custom Styling for the icons and spacing */
+    .road_text {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .detail-label {
+        font-weight: bold;
+    }
+
+    .property-details, .property-amenities, .property-address {
+        font-size: 1.1rem;
+    }
+
+    .property-details i, .property-amenities i, .property-address i {
+        margin-right: 10px;
+        font-size: 1.3rem;
+        color: #007bff;
+    }
+
+    .property-amenities ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .property-amenities li {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .property-address p, .property-details p {
+        margin-bottom: 10px;
+    }
+
+    .carousel-item img {
+        max-height: 400px; /* Set a fixed height for images */
+        object-fit: cover;
+    }
+
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+        background-color: #007bff; /* Customize the arrow buttons color */
+    }
+
+    .carousel-control-prev, .carousel-control-next {
+        font-size: 2rem;
+    }
+
+    /* Ensuring the layout uses full width of the screen */
+    .container.layout_padding {
+        padding: 30px 15px;
+    }
+</style>

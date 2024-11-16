@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<!-- Add Property Section Start -->
+<div class="contact_section layout_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="contact_taital">Sell/Rent Your Property</h1>
+               
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center mt-4">
+            <div class="col-md-6">
+                <div class="mail_section">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <!-- Listing Name -->
+                        <div class="mb-3">
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                placeholder="Listing Name" 
+                                name="property_name" 
+                                required>
+                        </div>
+                        <!-- Sell or Rent -->
+                        <div class="mb-3">
+                            <select class="form-select" name="property_type" required>
+                                <option value="Sell" selected>Sell</option>
+                                <option value="Rent">Rent</option>
+                            </select>
+                        </div>
+                        <!-- Submit Button -->
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary w-100">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="contact_img text-center">
+                    <img 
+                        src="{% static 'images/rent_sell.jpg' %}" 
+                        alt="Rent or Sell Your Property" 
+                        class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Add Property Section End -->
+{% else %}
+<!-- Redirect to Login Page if User is Not Logged In -->
+<script>
+    window.location.href = "{% url 'login_user' %}";
+</script>
+{% endif %}
+{% endblock %}

@@ -117,13 +117,23 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+# STATIC_ROOT = BASE_DIR / "static"
+# STATIC_ROOT = BASE_DIR / "static"
+
+# For prod
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+AUTH_USER_MODEL = "auth_app.CustomUser"
+AUTHENTICATION_BACKENDS = [
+    'auth_app.backend.EmailAuthBackend',  # Your custom email authentication backend
+    'django.contrib.auth.backends.ModelBackend',  # Keep the default backend for flexibility
+]
 
 # Email config backend
 
@@ -135,3 +145,6 @@ EMAIL_PORT = 587
 # place this inside env file later
 EMAIL_HOST_USER = "adwikworks@yahoo.com"
 EMAIL_HOST_PASSWORD = "Adwik@321@123"
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR/'gallery_images'

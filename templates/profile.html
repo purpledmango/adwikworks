@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container layout_padding">
+    <div class="pt-4">
+        <h2 class="contact_taital text-center">My Profile</h2>
+    </div>
+
+    <!-- Profile Information Section -->
+    <div class="row">
+        <div class="col">
+            <div class=" border p-3 rounded shadow-sm">
+                <div class="d-flex justify-content-between align-items-center">
+                    <!-- Display the name and the logout button side by side -->
+                    <h3 class="mb-0">Hello, {{user.first_name}}</h3>
+                    <a href="{% url 'logout_user' %}" class="btn btn-danger btn-sm">Logout</a>
+                </div>
+                
+                <!-- Collapsible Profile Information -->
+                <div class="collapse" id="profileInfo">
+                    <div class="profile-details mt-3">
+                        <p><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+                        <p><strong>Email:</strong> {{ user.email }}</p>
+                        <p><strong>Contact No:</strong> {{ user.contact_no }}</p>
+                        <p><strong>Joined:</strong> {{ user.created_at|date:"F j, Y" }}</p>
+                    </div>
+                </div>
+
+                <!-- Clickable Arrow for Collapsing Profile Info -->
+                <div class="text-center mt-2">
+                    <button class="btn btn-link text-decoration-none" type="button" data-bs-toggle="collapse" data-bs-target="#profileInfo" aria-expanded="false" aria-controls="profileInfo">
+                        <i class="fa fa-chevron-down" aria-hidden="true"></i> 
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- My Listed Properties Section -->
+    <div class="pt-4">
+        <h2 class="contact_taital text-center">My Listed Properties</h2>
+    </div>
+
+    <div class="row">
+        {% if properties %}
+            {% for property in properties %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="property-card border p-3 rounded shadow-sm">
+                        <div class="property-img mb-3">
+                            {% if property.gallery.first %}
+                                <img src="{{ property.gallery.first.image.url }}" alt="Property Image" class="img-fluid rounded">
+                            {% else %}
+                                <img src="{% static 'images/default-property.jpg' %}" alt="Default Property Image" class="img-fluid rounded">
+                            {% endif %}
+                        </div>
+                        <div class="property-info">
+                            <h5>{{ property.title }}</h5>
+                            <p><strong>Type:</strong> {{ property.property_type }}</p>
+                            <p><strong>Price:</strong> ₹{{ property.propertydetails.price }}</p>
+                            <p><strong>Area:</strong> {{ property.propertydetails.area }} m²</p>
+                            <a href="{% url 'property_detail' property.id %}" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-12">
+                <p class="text-center">You have no listed properties at the moment.</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

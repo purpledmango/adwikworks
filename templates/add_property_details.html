@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container layout_padding">
+    <div class="pt-4">
+        <h2 class="contact_taital text-center">Add Property Details</h2>
+    </div>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- Property Name (Hidden, passed from the view) -->
+        <input type="hidden" name="property_name" class="mail_text" value="{{ property.title }}">
+        <input type="hidden" name="property_type" class="mail_text" value="{{ property.property_type }}">
+
+        <!-- Description -->
+        <div class="form-group">
+            <h3 class="road_text">Property Details</h3>
+            <label for="description">Property Description</label>
+            <textarea class="form-control" id="description" name="description" placeholder="Example: 3 BHK flat, sunfacing balcony in Malviya Nagar" rows="4" required></textarea>
+        </div>
+
+        <!-- Price -->
+        <div class="form-group">
+            <label for="price">Listing Price</label>
+            <input type="text" class="form-control" id="price" placeholder="INR" name="price" required>
+        </div>
+
+        <div class="form-group py-4">
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <label for="room">Rooms</label>
+                    <input type="number" class="form-control" id="room" placeholder="0" name="rooms" required>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <label for="kitchen">Kitchen</label>
+                    <input type="number" class="form-control" id="kitchen" placeholder="0" name="kitchen" required>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <label for="bathroom">Bathrooms</label>
+                    <input type="number" class="form-control" id="bathroom" placeholder="0" name="bathroom" required>
+                </div>
+            </div>
+        </div>
+
+        <!-- Amenities -->
+        <div class="form-group">
+            <h3 class="road_text">Amenities</h3>
+            <input type="checkbox" id="has_pool" name="has_pool">
+            <label for="has_pool">Pool</label><br>
+            <input type="checkbox" id="has_gym" name="has_gym">
+            <label for="has_gym">Gym</label><br>
+            <input type="checkbox" id="has_parking" name="has_parking">
+            <label for="has_parking">Parking</label><br>
+        </div>
+
+        <!-- Address -->
+        <div class="form-group">
+            <h3 class="road_text">Address</h3>
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <label for="street">Street</label>
+                    <input type="text" class="form-control" id="street" name="street" required>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" name="city" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <label for="state">State</label>
+                    <input type="text" class="form-control" id="state" name="state" required>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <label for="zip_code">Zip Code</label>
+                    <input type="text" class="form-control" id="zip_code" name="zip_code" required>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary">Save Property</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

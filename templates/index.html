@@ -1,7 +1,398 @@
 {% extends "base.html" %}
-
+{% load static %}
+   
 {% block content %}
 
-<h1>This is the Home pages</h1>
 
-{% endblock %}
+ 
+      
+      <!-- select box section start -->
+      <div class="container">
+         <div class="select_box_section">
+             <div class="select_box_main text-center" style="position: static;">
+                 <h1 class="find_text mb-4">Find Property</h1>
+                 <div class="row justify-content-center align-items-center g-3 mb-3">
+                     <!-- Dropdown Select -->
+                     <div class="col-lg-9 col-md-8 col-sm-10">
+                         <select class="form-select">
+                             <option value="" disabled selected>Lucknow</option>
+                             <option value="1">Gorakhpur</option>
+                             <option value="2">Gonda</option>
+                             <option value="3">Ayodhya</option>
+                         </select>
+                     </div>
+                     <!-- Find Button -->
+                     <div class="col-lg-3 col-md-4 col-sm-10">
+                         <div class="find_btn">
+                             <a href="{% url 'properties' %}" class="btn btn-primary w-100">Find Now</a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="my-3">
+                     <strong>OR</strong>
+                 </div>
+                 <div class="row justify-content-center g-3">
+                     <!-- List Your Property Button -->
+                     <div class="col-lg-3 col-md-4 col-sm-10">
+                         <div class="find_btn">
+                             <a href="{% url 'add_property' %}" class="btn btn-secondary w-100">Rent/Sell Your Property</a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     
+      <!-- feature section start -->
+      <div class="feature_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12">
+                  <div class="feature_taital_main">
+                     <h1 class="feature_taital">FEATURED</h1>
+                     <hr class="border_main">
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container-fluid">
+            <div id="main_slider" class="carousel slide" data-ride="carousel">
+               <div class="carousel-inner">
+                  <div class="carousel-item active">
+                     <div class="feature_section_2">
+                        <div class="row">
+                           <div class="col-md-4">
+                              <div class="container_main">
+                                 <img src="{% static 'images/img-1.png' %}" alt="" class="image">
+                                 <div class="overlay">
+                                    <div class="text">
+                                       <div class="some_text"><a href="#">See More</a></div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-4">
+                              <div class="container_main">
+                                 <img src="{% static 'images/img-2.png' %}" alt="" class="image">
+                                 <div class="overlay">
+                                    <div class="text">
+                                       <div class="some_text"><a href="#">See More</a></div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-4">
+                              <div class="container_main">
+                                 <img src="{% static 'images/img-3.png' %}" alt="" class="image">
+                                 <div class="overlay">
+                                    <div class="text">
+                                       <div class="some_text"><a href="#">See More</a></div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="carousel-item">
+                     <div class="feature_section_2">
+                        <div class="row">
+                           <div class="col-md-4">
+                              <div class="container_main">
+                                 <img src="{% static 'images/img-1.png' %}" alt="" class="image">
+                                 <div class="overlay">
+                                    <div class="text">
+                                       <div class="some_text"><a href="#">See More</a></div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-4">
+                              <div class="container_main">
+                                 <img src="{% static 'images/img-2.png' %}" alt="" class="image">
+                                 <div class="overlay">
+                                    <div class="text">
+                                       <div class="some_text"><a href="#">See More</a></div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-4">
+                              <div class="container_main">
+                                 <img src="{% static 'images/img-3.png' %}" alt="" class="image">
+                                 <div class="overlay">
+                                    <div class="text">
+                                       <div class="some_text"><a href="#">See More</a></div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="carousel-item">
+                     <div class="feature_section_2">
+                        <div class="row">
+                           <div class="col-md-4">
+                              <div class="container_main">
+                                 <img src="{% static 'images/img-1.png' %}" alt="" class="image">
+                                 <div class="overlay">
+                                    <div class="text">
+                                       <div class="some_text"><a href="#">See More</a></div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-4">
+                              <div class="container_main">
+                                 <img src="{% static 'images/img-2.png' %}" alt="" class="image">
+                                 <div class="overlay">
+                                    <div class="text">
+                                       <div class="some_text"><a href="#">See More</a></div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-4">
+                              <div class="container_main">
+                                 <img src="{% static 'images/img-3.png' %}" alt="" class="image">
+                                 <div class="overlay">
+                                    <div class="text">
+                                       <div class="some_text"><a href="#">See More</a></div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+                <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
+                <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next">
+                <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+         </div>
+      </div>
+      <!-- feature section end -->
+      <!-- Properties section start -->
+      <div class="Properties_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12">
+                  <div class="Properties_taital_main">
+                     <h1 class="Properties_taital">New Properties for You</h1>
+                     <hr class="border_main">
+                  </div>
+               </div>
+            </div>
+            <div class="Properties_section_2">
+               <div class="row">
+                  {% if properties %}
+                 {% for prop in properties %}
+                 <div class="col-lg-4 col-md-6">
+                  <a href="{% url 'view_property'  prop.id%}">
+                     <div class="blog_img"><img src="{{ prop.gallery.first.image.url }}"></div>
+                  <div class="image_box">
+                  
+                        <h1 class="road_text_">{{prop.title}}</h1>
+                        <div class="area_main">
+                           <h3 class="area_text">Area<br><span style="font-weight:100; font-size: 12px; ">{{props.propertydetails.area}} sq.ft</span></h3>
+                           <h3 class="area_text">Rooms<br>{{props.propertydetails.rooms }}</h3>
+                           <h3 class="area_text">Bathrooms<br>{{props.propertydetails.bathroom}}</h3>
+                           <h3 class="area_text">Kitchen<br>{{props.propertydetails.kitchen}}</h3>
+                        
+                     </div>
+                     <div class="container center py-4">
+                        <div class="rate_text">₹ {{prop.propertydetails.price}}</div>
+                     </div>
+                  </div>
+                  </a>
+               </div>
+                 {% endfor %}
+                 {% else %}
+                 <h1 class="blog_taital" style="color: black;">No Properties to show....</h1>
+
+                 {% endif %}
+                 
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Properties section end -->
+      <!-- blog section start -->
+      <div class="blog_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12">
+                  <div class="blog_taital_main">
+                     <h1 class="blog_taital">Book Now Property</h1>
+                     <hr class="blog_border_main">
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="blog_section_2">
+            <div class="container-fluid">
+                <div class="row">
+                   <div class="col-md-6">
+                     <div class="blog_text_main">
+                        <p class="blog_text">Get our Experts to help you in choosing the best properties around you!</p>
+                        <div class="readmore_bt"><a href="{% url 'contact_us' %}">Contact Us</a></div>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="blog_img"><img src="{% static 'images/blog-img.png' %}"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- blog section end -->
+      <!-- newsletter section start -->
+      <div class="newsletter_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12">
+                  <div class="newsletter_taital_main">
+                     <h1 class="newsletter_taital">subscribe Our newsletter</h1>
+                     <hr class="newsletter_border_main">
+                  </div>
+               </div>
+            </div>
+            <form action="">
+               <textarea class="email_bt" placeholder="Enter Your Email" rows="5" id="comment" name="Massage"></textarea>
+               <div class="subscribe_bt"><a href="#">Subscribe</a></div>
+            </form>
+         </div>
+      </div>
+      <!-- newsletter section end -->
+      <!-- customers section start -->
+      <div class="customer_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12">
+                  <div class="customer_taital_main">
+                     <h1 class="customer_taital">SATISFIED CLIENT Says</h1>
+                     <hr class="customer_border_main">
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div id="my_slider" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+               <div class="carousel-item active">
+                  <div class="customer_section_2">
+                     <div class="container">
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="box_main">
+                                 <div class="customer_main">
+                                    <div class="customer_left">
+                                       <div class="customer_img"><img src="{% static 'images/customer-img.png' %}"></div>
+                                    </div>
+                                    <div class="customer_right">
+                                       <h3 class="customer_name">DenoMark <span class="quick_icon"></span></h3>
+                                       <p class="enim_text">anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internetanything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="carousel-item">
+                  <div class="customer_section_2">
+                     <div class="container">
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="box_main">
+                                 <div class="customer_main">
+                                    <div class="customer_left">
+                                       <div class="customer_img"><img src="{% static 'images/customer-img.png' %}"></div>
+                                    </div>
+                                    <div class="customer_right">
+                                       <h3 class="customer_name">DenoMark <span class="quick_icon"></span></h3>
+                                       <p class="enim_text">anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internetanything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="carousel-item">
+                  <div class="customer_section_2">
+                     <div class="container">
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="box_main">
+                                 <div class="customer_main">
+                                    <div class="customer_left">
+                                       <div class="customer_img"><img src="{% static 'images/customer-img.png' %}"></div>
+                                    </div>
+                                    <div class="customer_right">
+                                       <h3 class="customer_name">DenoMark <span class="quick_icon"></span></h3>
+                                       <p class="enim_text">anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internetanything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
+              <i class="fa fa-arrow-left"></i>
+            </a>
+            <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
+              <i class="fa fa-arrow-right"></i> 
+            </a>
+         </div>
+      </div>
+      <!-- customers section end -->
+      <!-- contact section start -->
+      <div class="contact_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12">
+                  <div class="contact_taital_main">
+                     <h1 class="contact_taital">Requeste A Call Back</h1>
+                     <hr class="contact_border_main">
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container-fluid">
+            <div class="contact_section_2">
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="mail_section map_form_container">
+                        <form action="">
+                        <input type="text" class="mail_text" placeholder="Name" name="Name">
+                        <input type="text" class="mail_text" placeholder="Phone Number" name="Phone Number"> 
+                        <input type="text" class="mail_text" placeholder="Email" name="Email">
+                        <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="Massage"></textarea>
+                        <div class="btn_main">
+                           <div class="send_bt active"><a href="#">Send Now</a></div>
+                           <div class="map_bt"><a href="#" id="showMap">Map</a></div>
+                        </div>
+                        </form>
+                        
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="contact_img"><img src="{% static 'images/contact-img.png' %}"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- contact section end -->
+      
+      {% endblock  %}

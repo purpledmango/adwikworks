@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+   <!-- login section -->
+
+   <div class="container">
+      <div class="contact_section layout_padding">
+          <div class="container">
+             <div class="row">
+                <div class="col-sm-12">
+                   <div class="contact_taital_main">
+                      <h1 class="contact_taital">Login</h1>
+                      <hr class="contact_border_main">
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="container-fluid">
+             <div class="contact_section_2">
+                <div class="row">
+                   <div class="col-md-6">
+                      <div class="mail_section map_form_container">
+
+                          {% if messages %}
+                          
+                          {% for msg in messages %}
+                          <span style="color: red;" class="alert alert-danger">{{ msg }}</span>
+                          {% endfor %}
+                           
+                          {% endif %}
+
+                         <form method="post">
+                            {% csrf_token %}
+                            <input type="email" class="mail_text" placeholder="Email" name="email" style="color: black; padding: 6px 12px;">
+                            <input type="password" class="mail_text" placeholder="Password" name="password" style="color: black;  padding: 6px 12px;">
+                         
+                         <div class="btn_main">
+                            <button type="submit" style="width: auto;
+                            text-align: center;
+                            font-size: 18px;
+                            color: #ffffff;
+                            background-color: #f9bc19;
+                            padding: 10px 60px;
+                            text-transform: uppercase;
+                            margin-top: 30px;
+                            display: block;
+                            font-weight: bold;
+                            border-radius: 5px;">Login</button>
+                         </div>
+
+                         Don't have an account? <a style="color: blue; text-decoration: underline;"  href="{% url 'register_user' %}">Register</a>
+                         </form>
+                         
+                      </div>
+                   </div>
+                   <div class="col-md-6">
+                      <div class="contact_img">
+                          <img src="{% static 'images/contact-img.png' %}" alt="Contact Image">
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+
+{% endblock %}
