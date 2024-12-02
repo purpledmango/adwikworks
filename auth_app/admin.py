@@ -1,6 +1,17 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import CustomUser
+from django.contrib import admin
+
+# Customize the AdminSite class
+class MyAdminSite(admin.AdminSite):
+    site_header = "Adwik Works Admin"  # Header displayed on the top
+    site_title = "ADWIK WORKS"   # Title shown in the browser's title bar
+    index_title = "Welcome to the Adwik Works"  # Title displayed on the admin index page
+
+# Register your custom AdminSite instance
+admin.site = MyAdminSite()
+
 
 class CustomUserAdmin(UserAdmin):
     # Fields to display in the admin list view
